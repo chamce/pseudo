@@ -35,80 +35,83 @@ How to make Kraft Mac & Cheese:
 
 PROGRAM fixKraftMacAndCheese
 
-// define objects 
-
-kitchen
-    stove
-        burner
-            temp
-            heat
-        timer
-    sink
-        faucet
-            condition
-        content
-
-materials
-    dishes
-        mediumPan
-            content
-        cookSpoon
-        colander
-            content
-        measureCup
-            content
-        knife
-    dishSoap
-        content
-    sponge
-        condition
-
-ingredients
-    kraftBox
-        pasta
-        cheese
-    butterStick
-        amount
-    milk
-        amount
-
+// define objects
+```
+kitchen  
+    stove  
+        burner  
+            temp  
+            heat  
+        timer  
+    sink  
+        faucet  
+            condition  
+        content  
+```
+```
+materials  
+    dishes  
+        mediumPan  
+            content  
+        cookSpoon  
+        colander  
+            content  
+        measureCup  
+            content  
+        knife  
+    dishSoap  
+        content  
+    sponge  
+        condition  
+```
+```
+ingredients  
+    kraftBox  
+        pasta  
+        cheese  
+    butterStick  
+        amount  
+    milk  
+        amount  
+```
 // deploy
-
-while (kitchen#burner#heat === false || sink#faucet#condition === false) {
-    chooseLocation(kitchen)
-        test(stove, sink)
-    }
-gather(materials, ingredients, kitchen) {
-    have(materials)
-    wash(dishes, materials#dishSoap, materials#sponge)
-    have(ingredients)
-    fresh(ingredients)
-    enough(ingredients, materials#measureCup)
-}
-cook(kitchen, materials, ingredients) {
-    addWaterToPan(kitchen#sink, materials#mediumPan, materials#measureCup)
-    placePanOnStove(kitchen#stove, materials#mediumPan)
-    turnBurnerOn(kitchen#stove)
-    boilWater(kitchen#stove, materials#mediumPan)
-    openKraftBox(ingredients#kraftBox)
-        removeCheesePouch(kraftBox)
-    addPastaToPan(ingredients#kraftBox#pasta, materials#mediumPan, materials#cookSpoon)
-        stir(mediumPan, cookSpoon)
-    startTimer(kitchen#stove, materials#mediumPan, materials#cookSpoon)
-        every 2 minutes {
-            stir(mediumPan, cookSpoon)
-        }
-    turnBurnerOff(kitchen#stove)
-    movePanToSink(materials#mediumPan, kitchen#sink)
-    moveColanderToSink(materials#colander, kitchen#sink)
-    pourPanToColander(materials#mediumPan, materials#colander)
-    pourColanderToPan(materials#mediumPan, materials#colander)
-    measureMilk(ingredients#milk, materials#measureCup)
-    addMilkToPan(ingredients#milk, materials#mediumPan)
-    measureButter(ingredients#butterStick, materials#knife)
-    addButterToPan(ingredients#butterStick, materials#mediumPan)
-    openCheesePouch(ingredients#kraftBox#cheesePouch)
-    addCheeseToPan(ingredients#kraftBox#cheesePouch, materials#mediumPan)
-    stirUntilUniform(materials#mediumPan, materials#cookSpoon)
-    serve(materials#mediumPan, materials#cookSpoon)
-}
+```
+while (kitchen#burner#heat === false || sink#faucet#condition === false) {  
+    chooseLocation(kitchen)  
+        test(stove, sink)  
+    }  
+gather(materials, ingredients, kitchen) {  
+    have(materials)  
+    wash(dishes, materials#dishSoap, materials#sponge)  
+    have(ingredients)  
+    fresh(ingredients)  
+    enough(ingredients, materials#measureCup)  
+}  
+cook(kitchen, materials, ingredients) {  
+    addWaterToPan(kitchen#sink, materials#mediumPan, materials#measureCup)  
+    placePanOnStove(kitchen#stove, materials#mediumPan)  
+    turnBurnerOn(kitchen#stove)  
+    boilWater(kitchen#stove, materials#mediumPan)  
+    openKraftBox(ingredients#kraftBox)  
+        removeCheesePouch(kraftBox)  
+    addPastaToPan(ingredients#kraftBox#pasta, materials#mediumPan, materials#cookSpoon)  
+        stir(mediumPan, cookSpoon)  
+    startTimer(kitchen#stove, materials#mediumPan, materials#cookSpoon)  
+        every 2 minutes {  
+            stir(mediumPan, cookSpoon)  
+        }  
+    turnBurnerOff(kitchen#stove)  
+    movePanToSink(materials#mediumPan, kitchen#sink)  
+    moveColanderToSink(materials#colander, kitchen#sink)  
+    pourPanToColander(materials#mediumPan, materials#colander)  
+    pourColanderToPan(materials#mediumPan, materials#colander)  
+    measureMilk(ingredients#milk, materials#measureCup)  
+    addMilkToPan(ingredients#milk, materials#mediumPan)  
+    measureButter(ingredients#butterStick, materials#knife)  
+    addButterToPan(ingredients#butterStick, materials#mediumPan)  
+    openCheesePouch(ingredients#kraftBox#cheesePouch)  
+    addCheeseToPan(ingredients#kraftBox#cheesePouch, materials#mediumPan)  
+    stirUntilUniform(materials#mediumPan, materials#cookSpoon)  
+    serve(materials#mediumPan, materials#cookSpoon)  
+}  
+```
