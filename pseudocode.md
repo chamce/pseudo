@@ -35,8 +35,8 @@ How to make Kraft Mac & Cheese:
 
 PROGRAM fixKraftMacAndCheese
 
-// define objects 
-
+// define objects
+```
 kitchen  
     stove  
         burner  
@@ -47,7 +47,8 @@ kitchen
         faucet  
             condition  
         content  
-
+```
+```
 materials  
     dishes  
         mediumPan  
@@ -62,18 +63,19 @@ materials
         content  
     sponge  
         condition  
-
-ingredients
-    kraftBox
-        pasta
-        cheese
-    butterStick
-        amount
-    milk
-        amount
-
+```
+```
+ingredients  
+    kraftBox  
+        pasta  
+        cheese  
+    butterStick  
+        amount  
+    milk  
+        amount  
+```
 // deploy
-
+```
 while (kitchen#burner#heat === false || sink#faucet#condition === false) {  
     chooseLocation(kitchen)  
         test(stove, sink)  
@@ -112,3 +114,4 @@ cook(kitchen, materials, ingredients) {
     stirUntilUniform(materials#mediumPan, materials#cookSpoon)  
     serve(materials#mediumPan, materials#cookSpoon)  
 }  
+```
